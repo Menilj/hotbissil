@@ -869,49 +869,437 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="section gallery">
-        <div class="section-title animate">
-            <h2>Church Gallery</h2>
-        </div>
+
+    <title>Church Gallery</title>
+    <style>
+        :root {
+            --primary-color: #800000;  /* Deep maroon */
+            --secondary-color: #5E1914;  /* Darker maroon */
+            --accent-color: #C19A6B;  /* Gold accent */
+            --light-color: #F5F5F5;  /* Off-white */
+            --dark-color: #3D0C02;  /* Very dark maroon */
+            --shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-bottom: 4px solid var(--accent-color);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            aspect-ratio: 4/3;
+            background-color: #e0e0e0;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.08);
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(94, 25, 20, 0.9), transparent);
+            color: white;
+            padding: 1.2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px var(--dark-color);
+        }
+        
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(61, 12, 2, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            background-color: var(--dark-color);
+            padding: 10px;
+        }
+        
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 85vh;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        }
+        
+        .lightbox-caption {
+            color: var(--light-color);
+            text-align: center;
+            margin-top: 1.2rem;
+            font-size: 1.3rem;
+            padding: 0.5rem;
+            font-style: italic;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: var(--light-color);
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.2s;
+        }
+        
+        .close-btn:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-color);
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: rgba(94, 25, 20, 0.7);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        
+        .nav-btn:hover {
+            background: var(--accent-color);
+            color: var(--dark-color);
+        }
+        
+        .prev-btn {
+            left: 2rem;
+        }
+        
+        .next-btn {
+            right: 2rem;
+        }
+        
+        footer {
+            background: linear-gradient(to right, var(--dark-color), var(--secondary-color));
+            color: var(--light-color);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 3px solid var(--accent-color);
+        }
+        
+        footer p {
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .placeholder-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #999;
+            text-align: center;
+            width: 80%;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sacred Moments Gallery</h1>
+        <p class="subtitle">A visual testament to our faith journey</p>
+    </header>
+    
+    <div class="gallery-container">
         <div class="gallery-grid">
-            <div class="gallery-item animate delay-1">
-                <img src="https://images.unsplash.com/photo-1542272201-b1ca555f8505?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="Sunday Service">
-                <div class="gallery-overlay">
-                    <i class="fas fa-search-plus"></i>
-                </div>
+            <!-- GALLERY ITEM 1 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(0)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Sanctuary View" class="gallery-img">
+                <div class="caption">Sanctuary View</div>
+                <div class="placeholder-text">Replace with image URL</div>
             </div>
-            <div class="gallery-item animate delay-1">
-                <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Worship Team">
-                <div class="gallery-overlay">
-                    <i class="fas fa-search-plus"></i>
-                </div>
+            
+            <!-- GALLERY ITEM 2 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Altar Details" class="gallery-img">
+                <div class="caption">Altar Details</div>
+                <div class="placeholder-text">Replace with image URL</div>
             </div>
-            <div class="gallery-item animate delay-2">
-                <img src="https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Baptism">
-                <div class="gallery-overlay">
-                    <i class="fas fa-search-plus"></i>
-                </div>
+            
+            <!-- GALLERY ITEM 3 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(2)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Stained Glass" class="gallery-img">
+                <div class="caption">Stained Glass</div>
+                <div class="placeholder-text">Replace with image URL</div>
             </div>
-            <div class="gallery-item animate delay-2">
-                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczNhr2ioRJzXeS5dex49ooQW7B2743E_u8q0dfCiigO90-KASevlcMg=w390-h520-s-no?authuser=0">
-                <div class="gallery-overlay">
-                    <i class="fas fa-search-plus"></i>
-                </div>
+            
+            <!-- GALLERY ITEM 4 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(3)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Community Gathering" class="gallery-img">
+                <div class="caption">Community Gathering</div>
+                <div class="placeholder-text">Replace with image URL</div>
             </div>
-            <div class="gallery-item animate delay-3">
-                <img src="https://images.unsplash.com/photo-1595624871930-6e8537998592?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1588&q=80" alt="Children's Ministry">
-                <div class="gallery-overlay">
-                    <i class="fas fa-search-plus"></i>
-                </div>
+            
+            <!-- GALLERY ITEM 5 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(4)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Choir Performance" class="gallery-img">
+                <div class="caption">Choir Performance</div>
+                <div class="placeholder-text">Replace with image URL</div>
             </div>
-            <div class="gallery-item animate delay-3">
-                <img src="https://images.unsplash.com/photo-1566669437686-c2a02fd5c96a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Community Service">
-                <div class="gallery-overlay">
-                    <i class="fas fa-search-plus"></i>
-                </div>
+            
+            <!-- GALLERY ITEM 6  -->
+            <div class="gallery-item" onclick="openLightbox(5)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Candlelight Service" class="gallery-img">
+                <div class="caption">Candlelight Service</div>
+                <div class="placeholder-text">Replace with image URL</div>
+            </div>
+            
+            <!-- GALLERY ITEM 7 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(6)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Baptism Ceremony" class="gallery-img">
+                <div class="caption">Baptism Ceremony</div>
+                <div class="placeholder-text">Replace with image URL</div>
+            </div>
+            
+            <!-- GALLERY ITEM 8 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(7)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Sunday Service" class="gallery-img">
+                <div class="caption">Sunday Service</div>
+                <div class="placeholder-text">Replace with image URL</div>
+            </div>
+            
+            <!-- GALLERY ITEM 9 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(8)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Prayer Circle" class="gallery-img">
+                <div class="caption">Prayer Circle</div>
+                <div class="placeholder-text">Replace with image URL</div>
+            </div>
+            
+            <!-- GALLERY ITEM 10 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(9)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Children's Ministry" class="gallery-img">
+                <div class="caption">Children's Ministry</div>
+                <div class="placeholder-text">Replace with image URL</div>
+            </div>
+            
+            <!-- GALLERY ITEM 11 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(10)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Outreach Program" class="gallery-img">
+                <div class="caption">Outreach Program</div>
+                <div class="placeholder-text">Replace with image URL</div>
+            </div>
+            
+            <!-- GALLERY ITEM 12 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(11)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Bible Study" class="gallery-img">
+                <div class="caption">Bible Study</div>
+                <div class="placeholder-text">Replace with image URL</div>
+            </div>
+            
+            <!-- GALLERY ITEM 13 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(12)">
+                <img src="INSERT_DIRECT_IMAGE_URL_HERE" alt="Fellowship Meal" class="gallery-img">
+                <div class="caption">Fellowship Meal</div>
+                <div class="placeholder-text">Replace with image URL</div>
             </div>
         </div>
-    </section>
+    </div>
+    
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="close-btn" onclick="closeLightbox()">&times;</button>
+        <button class="nav-btn prev-btn" onclick="navigate(-1)">&#10094;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" class="lightbox-img" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+        <button class="nav-btn next-btn" onclick="navigate(1)">&#10095;</button>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Sacred Moments Gallery. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        let currentIndex = 0;
+        
+        // Array of image sources and captions
+        // REPLACE THESE WITH YOUR ACTUAL IMAGE URLs
+        const images = [
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Sanctuary View" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Altar Details" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Stained Glass" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Community Gathering" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Choir Performance" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Candlelight Service" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Baptism Ceremony" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Sunday Service" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Prayer Circle" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Children's Ministry" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Outreach Program" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Bible Study" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Fellowship Meal" }
+        ];
+        
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxImg.src = images[index].src;
+            lightboxCaption.textContent = images[index].caption;
+            lightbox.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+        
+        function closeLightbox() {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        
+        function navigate(direction) {
+            currentIndex += direction;
+            
+            // Wrap around if at beginning or end
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            
+            lightboxImg.src = images[currentIndex].src;
+            lightboxCaption.textContent = images[currentIndex].caption;
+        }
+        
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === "flex") {
+                if (e.key === "Escape") {
+                    closeLightbox();
+                } else if (e.key === "ArrowLeft") {
+                    navigate(-1);
+                } else if (e.key === "ArrowRight") {
+                    navigate(1);
+                }
+            }
+        });
+    </script>
+
 
     <!-- Contact Section -->
     <section id="contact" class="section">
