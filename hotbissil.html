@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Transformation - Bissil, Kajiado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --maroon: #800020;
+            --maroon-light: #a83252;
+            --maroon-dark: #500010;
+            --gold: #D4AF37;
+            --cream: #F5F5DC;
+            --dark: #333;
+            --light: #f8f8f8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            background-color: var(--maroon);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            color: white;
+            padding: 10px;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--maroon);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--gold);
+            color: var(--maroon);
+        }
+        
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .header-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--maroon);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-maroon {
+            background-color: var(--maroon);
+            color: white;
+            margin-left: 15px;
+        }
+        
+        .btn-maroon:hover {
+            background-color: var(--maroon-dark);
+            color: white;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--maroon);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--maroon);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Sermons Section */
+        .sermons {
+            background-color: var(--cream);
+        }
+        
+        .sermon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .sermon-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .sermon-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .sermon-video {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .sermon-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .sermon-info {
+            padding: 20px;
+        }
+        
+        .sermon-info h3 {
+            color: var(--maroon);
+            margin-bottom: 10px;
+        }
+        
+        .sermon-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Events Section */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .event-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .event-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .event-card:hover .event-image img {
+            transform: scale(1.1);
+        }
+        
+        .event-date {
+            background-color: var(--maroon);
+            color: white;
+            padding: 10px 15px;
+            display: inline-block;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .event-info {
+            padding: 20px;
+            position: relative;
+        }
+        
+        .event-info h3 {
+            color: var(--maroon);
+            margin-bottom: 10px;
+        }
+        
+        .event-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .event-meta i {
+            margin-right: 8px;
+            color: var(--maroon);
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--cream);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(128, 0, 32, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay i {
+            color: white;
+            font-size: 2rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            color: var(--maroon);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            color: var(--maroon);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--maroon);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Map */
+        .map {
+            height: 300px;
+            width: 100%;
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--maroon);
+            color: white;
+            padding: 50px 20px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--maroon);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            z-index: 1001;
+            background-color: var(--maroon);
+            border-radius: 5px;
+        }
+        
+        .menu-toggle i {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: var(--maroon);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                max-width: 250px;
+            }
+            
+            .btn-maroon {
+                margin-left: auto;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+             .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            aspect-ratio: 4/3;
+            
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.08);
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(94, 25, 20, 0.9), transparent);
+            color: white;
+            padding: 1.2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px var(--dark-color);
+        }
+        
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(61, 12, 2, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            background-color: var(--dark-color);
+            padding: 10px;
+        }
+        
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 85vh;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        }
+        
+        .lightbox-caption {
+            color: var(--light-color);
+            text-align: center;
+            margin-top: 1.2rem;
+            font-size: 1.3rem;
+            padding: 0.5rem;
+            font-style: italic;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: var(--light-color);
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.2s;
+        }
+        
+        .close-btn:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-color);
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: rgba(94, 25, 20, 0.7);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        
+        .nav-btn:hover {
+            background: var(--accent-color);
+            color: var(--dark-color);
+        }
+        
+        .prev-btn {
+            left: 2rem;
+        }
+        
+        .next-btn {
+            right: 2rem;
+        }
+        
+        /* Placeholder text for gallery items */
+        
+        
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+        
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+        }
+         /* Chat Button */
+          .chat-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color:red;
+            color: green;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(40, 12, 12, 0.2);
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .chat-button:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul id="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#sermons and choir">Sermons and choir</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header/Hero Section -->
+    <header id="home">
+        <div class="logo-img">
+            <img src="https://th.bing.com/th/id/OIP.oyHPMY9kWehC8uzXyiEqaQAAAA?rs=1&pid=ImgDetMain" alt="House of Transformation Church Logo">
+        </div>
+        <style>
+            /* Logo Styles */
+            .logo-img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            .logo-img img {
+                width: 100%;
+                height: auto;
+                max-width: 200px; /* Adjust as needed */
+                border-radius: 50%;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+        
+</style>
+        <div class="header-content animate">
+            <h1>House of Transformation</h1>
+            <p>A place of worship, fellowship, and spiritual growth in Bissil, Kajiado Central, Kenya. Join us as we transform lives through the power of God's word.</p>
+            <div>
+                <a href="#about" class="btn">Learn More</a>
+                <a href="#events" class="btn btn-maroon">Upcoming Events</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-title animate">
+            <h2>About Our Church</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text animate delay-1">
+                <h3>Transforming Lives in Kajiado</h3>
+                <p>House of Transformation (HOT) is a vibrant Christian community located in Bissil, Kajiado Central, Kenya. Founded in 2019, we are committed to spreading the Gospel and transforming lives through the power of God's word.</p>
+                <p>Our mission is to transform the lives of God’s people for spiritual and physical prosperity by Preaching the Kingdom of God and those things which concern the Lord Jesus Christ. (Acts 28:31)</p>
+                <p>Our Vision is to see the church flourishing and holistically transforming people’s lives through the anointed Gospel globally. (Matthew 28:19–20)
+</p>
+                <a href="#contact" class="btn">Visit Us</a>
+            </div>
+            <div class="about-image animate delay-2">
+                <img src="0f8938d1-e1d4-407d-bc38-4ca1b11adba6.jpg" alt="House of Transformation Church">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sermons Section -->
+    <section id="sermons" class="section sermons">
+        <div class="section-title animate">
+            <h2>Latest Sermons and Choir</h2>
+        </div>
+        <div class="sermon-grid">
+            <div class="sermon-card animate delay-1">
+                <div class="sermon-video">
+                    <iframe width="640" height="360" src="https://www.youtube.com/embed/ZKMYC_lmQhQ" title="UAMINIFU WAKO by Absalom K -House of Transformation Garden Estate Nairobi.#angelachibalonza" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="sermon-info">
+                    <h3>The Power of Transformation</h3>
+                    <div class="sermon-meta">
+                        <span>Pastor John Maina</span>
+                        <span>June 15, 2023</span>
+                    </div>
+                    <p>Discover how God's transformative power can change your life from the inside out.</p>
+                </div>
+            </div>
+            
+            <div class="sermon-card animate delay-2">
+                <div class="sermon-video">
+                    <iframe width="788" height="370" src="https://www.youtube.com/embed/dp0CbYG-ZZs" title="WEDNESDAY EVENING BIBLE STUDY  | 14TH MAY 2025" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="sermon-info">
+                    <h3>Walking in Faith</h3>
+                    <div class="sermon-meta">
+                        <span>Pastor Sarah Wambui</span>
+                        <span>June 8, 2023</span>
+                    </div>
+                    <p>Practical steps to develop a lifestyle of faith in your daily walk with God.</p>
+                </div>
+            </div>
+            
+            <div class="sermon-card animate delay-3">
+                <div class="sermon-video">
+                    <iframe width="788" height="370" src="https://www.youtube.com/embed/j7kgrIToH4o" title="A MOTHER&#39;S FAITH  | PASTOR JONATHAN NYONGESA | 11TH MAY 2025" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="sermon-info">
+                    <h3>A MOTHER'S FAITH</h3>
+                    <div class="sermon-meta">
+                        <span>PASTOR JONATHAN NYONGESA</span>
+                        <span>11TH MAY 2025</span>
+                    </div>
+                    <p>Understanding the importance of prayer and how to effectively intercede for others.</p>
+                </div>
+                </div>
+                
+                <div class="sermon-card animate delay-3">
+                    <div class="sermon-video">
+                        <div class="sermon-card animate delay-3">
+                            <div class="sermon-video">
+                                <iframe width="788" height="370" src="https://www.youtube.com/embed/spOOrr5Oewc" title="SUNDAY MORNING SERVICE PART 3 | 4TH MAY 2025 | PST KEN WYNE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="sermon-info">
+                                <h3>SUNDAY MORNING SERVICE</h3>
+                                <div class="sermon-meta">
+                                    <span>PST KEN WYNE </span>
+                                    <span>4TH MAY 2025</span>
+                                </div>
+                                <p>ly intercede for others.</p>
+                            </div>
+                            </div>
+                    </div>
+                    <div class="sermon-info">
+                        <h3>SUNDAY MORNING SERVICE</h3>
+                        <div class="sermon-meta">
+                            <span>PST KEN WYNE</span>
+                            <span>4TH MAY 2025</span>
+                        </div>
+                        <p>Today is an honour from God</p>
+                    </div>
+                    </div>
+            <div class="sermon-card animate delay-3">
+                <div class="sermon-video">
+                    <iframe width="640" height="360" src="https://www.youtube.com/embed/ivUb1K0B0zE" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="sermon-info">
+                    <h3>Yeshua </h3>
+                    <div class="sermon-meta">
+                        <span>Michael Koulianos</span>
+                        <span>Jan 27, 2024</span>
+                    </div>
+                    <p>Biblical principles for facing and overcoming the challenges of life with God's help.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section">
+        <div class="section-title animate">
+            <h2>Upcoming Events</h2>
+        </div>
+        <div class="event-grid">
+            <div class="event-card animate delay-1">
+                <div class="event-image">
+                    <img src="worship experience.png" alt="Fundraising Event">
+                    <div class="event-date"></div>
+                </div>
+                <div class="event-info">
+                    <h3>Fundraising</h3>
+                    <div class="event-meta">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>JUNE 8, 2025</span>
+                    </div>
+                    <div class="event-meta">
+                        <i class="fas fa-clock"></i>
+                        <span>9:00 AM - 5:00 PM </span>
+                    </div>
+                    <p>Join us for Fundraising for the roofing of the church.</p>
+                    
+                </div>
+            </div>
+            
+            
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery">
+        <div class="section-title animate">
+            <h2>Church Gallery</h2>
+        </div>
+    
+
+    <div class="gallery-container">
+        <div class="gallery-grid">
+            <!-- GALLERY ITEM 1 -->
+            <div class="gallery-item" onclick="openLightbox(0)">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMX4ZYcVhw_kW9qBpxSePQZlI2N2hb9U_bsvOFVABXJLSh-q9WG-S_S9_jeVqZtmAslQ_JOhFVyIZpdbRfXC5yXzUs3USyaApXuL14W4YSKlOuERz5yWBK6hwoIim5TPJwLtH0mgn5PmIObHpwExMo=w640-h392-s-no?authuser=0" alt="Sanctuary View" class="gallery-img">
+                <div class="caption">Sanctuary View</div>
+            </div>
+            
+            <!-- GALLERY ITEM 2  -->
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <img src="c013df78-8152-4ea9-9295-dfdedae834e5.jpg" alt="Pastor Martin and his Wife" class="gallery-img">
+                <div class="caption">Pastor Martin and his Wife</div>
+                
+            </div>
+            
+            <!-- GALLERY ITEM 3  -->
+            <div class="gallery-item" onclick="openLightbox(2)">
+                <img src="1a6f5221-98ff-444f-8a71-218fa2352a34.jpg" alt="After Service Picture" class="gallery-img">
+                <div class="caption">After Service Picture</div>
+                
+            </div>
+            
+            <!-- GALLERY ITEM 4  -->
+            <div class="gallery-item" onclick="openLightbox(3)">
+                <img src="f89cf78a-90ca-4ec8-a8f0-7c7391e496fc (1).jpg"alt="Reverend Ole Mamai and Others" class="gallery-img">
+                <div class="caption">Reverend Ole Mamai and Others</div>
+                <div class="placeholder-text">Replace with image URL</div>
+            </div>
+            
+            <!-- GALLERY ITEM 5  -->
+            <div class="gallery-item" onclick="openLightbox(4)">
+                <img src="13e6c2d0-f681-4ae6-bbee-3730993c0ca3.jpg" alt="After Service" class="gallery-img">
+                <div class="caption">After Service</div>
+                <div class="placeholder-text">Replace with image URL</div>
+            </div>
+            
+            <!-- GALLERY ITEM 6  -->
+            <div class="gallery-item" onclick="openLightbox(5)">
+                <img src="98d75913-bbee-4ab1-b4ef-a2e47d046e4d.jpg" alt="Having a small talk" class="gallery-img">
+                <div class="caption">Having a small talk</div>
+                
+            </div>
+            
+            <!-- GALLERY ITEM 7 -->
+            <div class="gallery-item" onclick="openLightbox(6)">
+                <img src="53e0aa81-3403-4a6d-9470-e385bfdef48c.jpg" alt="Preaching" class="gallery-img">
+                <div class="caption">Pastor  Martin Preaching</div>
+                
+            </div>
+            
+            <!-- GALLERY ITEM 8 -->
+            <div class="gallery-item" onclick="openLightbox(7)">
+                <img src="ba3c4075-6426-47e1-88e1-a66f730311de.jpg" alt="Sunday Service" class="gallery-img">
+                <div class="caption">Pastor Martin</div>
+                <div class="placeholder-text"></div>
+            </div>
+            
+            <!-- GALLERY ITEM 9 -->
+            <div class="gallery-item" onclick="openLightbox(8)">
+                <img src="https://c8.alamy.com/comp/R8RP35/men-praying-in-circle-in-prayer-group-R8RP35.jpg" alt="Prayer Circle" class="gallery-img">
+                <div class="caption">Prayer Circle</div>
+                
+            </div>
+            
+            <!-- GALLERY ITEM 10 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(9)">
+                <img src="https://th.bing.com/th/id/OIP.9A4h5WzxgiiZFuf8zx1YLgHaEo?rs=1&pid=ImgDetMain" alt="Children's Ministry" class="gallery-img">
+                <div class="caption">Children's Ministry</div>
+        
+            </div>
+            
+            <!-- GALLERY ITEM 11 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(10)">
+                <img src="3efa7e2b-ac03-4ffd-b138-5bcd2d0a7edb.jpg" alt="Outreach Program" class="gallery-img">
+                <div class="caption">Outreach Program</div>
+                
+            </div>
+            
+            <!-- GALLERY ITEM 12 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(11)">
+                <img src="https://th.bing.com/th/id/OIP.fPJY3EUqVbGAQj-kWAQzCAHaEK?rs=1&pid=ImgDetMain" alt="Bible Study" class="gallery-img">
+                <div class="caption">Bible Study</div>
+    
+            </div>
+            
+            <!-- GALLERY ITEM 13 - Replace the src with your direct image URL -->
+            <div class="gallery-item" onclick="openLightbox(12)">
+                <img src="https://th.bing.com/th/id/OIP.OgEWVFrB-Yc6i1kAy4N-LAHaEK?rs=1&pid=ImgDetMain" alt="Fellowship Meal" class="gallery-img">
+                <div class="caption">Fellowship Meal</div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="close-btn" onclick="closeLightbox()">&times;</button>
+        <button class="nav-btn prev-btn" onclick="navigate(-1)">&#10094;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" class="lightbox-img" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+        <button class="nav-btn next-btn" onclick="navigate(1)">&#10095;</button>
+    </div>
+    
+    
+    
+    <script>
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        let currentIndex = 0;
+        
+        // Array of image sources and captions
+    
+        const images = [
+            { src: "https://lh3.googleusercontent.com/pw/AP1GczMX4ZYcVhw_kW9qBpxSePQZlI2N2hb9U_bsvOFVABXJLSh-q9WG-S_S9_jeVqZtmAslQ_JOhFVyIZpdbRfXC5yXzUs3USyaApXuL14W4YSKlOuERz5yWBK6hwoIim5TPJwLtH0mgn5PmIObHpwExMo=w640-h392-s-no?authuser=0", caption: "Sanctuary View" },
+            { src: "c013df78-8152-4ea9-9295-dfdedae834e5.jpg", caption: "Pastor Martin and his wife" },
+            { src: "1a6f5221-98ff-444f-8a71-218fa2352a34.jpg", caption: "After Service Picture" },
+            { src: "f89cf78a-90ca-4ec8-a8f0-7c7391e496fc (1).jpg", caption: "Reverend Ole Mamai and Others" },
+            { src: "13e6c2d0-f681-4ae6-bbee-3730993c0ca3.jpg", caption: "After service" },
+            { src: "98d75913-bbee-4ab1-b4ef-a2e47d046e4d.jpg", caption: " Having a small talk" },
+            { src: "53e0aa81-3403-4a6d-9470-e385bfdef48c.jpg", caption: "Pastor Martin Preaching" },
+            { src: "ba3c4075-6426-47e1-88e1-a66f730311de.jpg", caption: "Pastor Martin" },
+            { src: "https://c8.alamy.com/comp/R8RP35/men-praying-in-circle-in-prayer-group-R8RP35.jpg", caption: "Prayer Circle" },
+            { src: "https://th.bing.com/th/id/OIP.9A4h5WzxgiiZFuf8zx1YLgHaEo?rs=1&pid=ImgDetMain", caption: "Children's Ministry" },
+            { src: "INSERT_DIRECT_IMAGE_URL_HERE", caption: "Outreach Program" },
+            { src: "https://th.bing.com/th/id/OIP.fPJY3EUqVbGAQj-kWAQzCAHaEK?rs=1&pid=ImgDetMain", caption: "Bible Study" },
+            { src: "https://th.bing.com/th/id/OIP.OgEWVFrB-Yc6i1kAy4N-LAHaEK?rs=1&pid=ImgDetMain", caption: "Fellowship Meal" }
+        ];
+        
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxImg.src = images[index].src;
+            lightboxCaption.textContent = images[index].caption;
+            lightbox.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+        
+        function closeLightbox() {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        
+        function navigate(direction) {
+            currentIndex += direction;
+            
+            // Wrap around if at beginning or end
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            
+            lightboxImg.src = images[currentIndex].src;
+            lightboxCaption.textContent = images[currentIndex].caption;
+        }
+        
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === "flex") {
+                if (e.key === "Escape") {
+                    closeLightbox();
+                } else if (e.key === "ArrowLeft") {
+                    navigate(-1);
+                } else if (e.key === "ArrowRight") {
+                    navigate(1);
+                }
+            }
+        });
+    </script>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="section-title animate">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info animate delay-1">
+                <h3>Get In Touch</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Bissil Town, Kajiado Central, Kenya</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+254 710930306</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>houseoftransformationbissil@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Service Times</h4>
+                            <p>Sunday: 10:00 AM & 12:30 AM</p>
+                            <p>Wednesday: 5:30 PM (Bible Study)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="contact-form animate delay-2">
+                <h3>Send Us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <div class="map animate delay-3">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.2345678901234!2d36.12345678901234!3d-1.2345678901234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTQnMDQuNCJTIDM2wrAwNyczNC4xIkU!5e0!3m2!1sen!2ske!4v1234567890123!5m2!1sen!2ske" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About HOT</h3>
+                <p>House of Transformation is a vibrant Christian community in Bissil, Kajiado Central, Kenya, committed to transforming lives through the power of God's word.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/254710930306?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20House%20of%20Transformation.
+"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#sermons">Sermons</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Ministries</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Men's Fellowship</a></li>
+                    <li><a href="#">Women's Ministry</a></li>
+                    <li><a href="#">Youth Empowerment</a></li>
+                    <li><a href="#">Children's Church</a></li>
+                    <li><a href="#">Praise & Worship</a></li>
+                    <li><a href="#">Community Outreach</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter to receive updates on events and sermons.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 House of Transformation - Bissil, Kajiado. All Rights Reserved.</p>
+        </div>
+    </footer>
+<!-- Chat Button -->
+
+    <div class="chat-button" onclick="window.open('https://wa.me/254716869432', '_blank')">
+        <i class="fab fa-whatsapp"></i>
+        
+    </div>
+    
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.getElementById('menu');
+        
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on Scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
